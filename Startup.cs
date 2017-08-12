@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.PlatformAbstractions;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace prodrink.gateway
 {
@@ -27,10 +29,14 @@ namespace prodrink.gateway
         }
 
         public IConfigurationRoot Configuration { get; }
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info {Title = "prodrink API", Version = "v1"});
+            });
 
             //services.AddSingleton<IClientStore, CustomClientStore>();
             services.AddIdentityServer()
@@ -52,7 +58,7 @@ namespace prodrink.gateway
                         new IdentityServer4.Postgresql.Entities.ApiResource
                         {
                             Name = "api1",
-                            Description = "Api",
+                            Description = "API",
                             DisplayName = "api1",
                             Scopes = new List<ApiScope> {new ApiScope {Name = "api1", DisplayName = "api1"}}
                         },
@@ -77,9 +83,9 @@ namespace prodrink.gateway
                     {
                         new IdentityServer4.Postgresql.Entities.Client
                         {
-                            Id = "ro.client",
-                            ClientId = "ro.client",
-                            ClientName = "mvc",
+                            Id = "api.client",
+                            ClientId = "api.client",
+                            ClientName = "API Client",
                             AllowedGrantTypes = new List<ClientGrantType>
                             {
                                 new ClientGrantType {GrantType = GrantType.Hybrid},
@@ -92,17 +98,15 @@ namespace prodrink.gateway
                             RequireConsent = false,
                             AllowedScopes = new List<ClientScope>
                             {
-                                new ClientScope {Scope = IdentityServer4.IdentityServerConstants.StandardScopes.OpenId},
-                                new ClientScope
-                                {
-                                    Scope = IdentityServer4.IdentityServerConstants.StandardScopes.Profile
-                                },
+                                new ClientScope {Scope = IdentityServerConstants.StandardScopes.OpenId},
+                                new ClientScope {Scope = IdentityServerConstants.StandardScopes.Profile},
                                 new ClientScope {Scope = "api1"}
                             },
                             RedirectUris = new List<ClientRedirectUri>
                             {
                                 new ClientRedirectUri {RedirectUri = "http://localhost:5000/signin-oidc"}
-                            }
+                            },
+                            AllowOfflineAccess = true
                         }
                     };
                     session.StoreObjects(clients);
@@ -132,6 +136,12 @@ namespace prodrink.gateway
 
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
+            
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "prodrink API V1");
+            });
         }
     }
 }

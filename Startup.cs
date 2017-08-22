@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using prodrink.gateway.Data;
 using prodrink.gateway.Models;
 using prodrink.gateway.Services;
+using prodrink.gateway.Services.Grpc;
 
 namespace prodrink.gateway
 {
@@ -34,6 +35,8 @@ namespace prodrink.gateway
 
             services.AddMvc();
 
+            AddGrpcProviders(services);
+
             // Add framework services.
             services.AddSwaggerGen(options =>
             {
@@ -55,6 +58,11 @@ namespace prodrink.gateway
                         .AllowAnyHeader()
                         .AllowCredentials());
             });
+        }
+
+        private static void AddGrpcProviders(IServiceCollection services)
+        {
+            services.AddSingleton<CatalogProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

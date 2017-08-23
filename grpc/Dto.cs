@@ -25,19 +25,23 @@ namespace prodrink.catalog {
             "ChFjYXRhbG9nL2R0by5wcm90bxIHY2F0YWxvZxoTY2F0YWxvZy9kcmluay5w",
             "cm90byIxCgxEcmlua1JlcXVlc3QSEAoIZHJpbmtfaWQYASABKAUSDwoHdXNl",
             "cl9pZBgCIAEoCSJKChBEcmlua1BhZ2VSZXF1ZXN0Eg8KB3VzZXJfaWQYASAB",
-            "KAkSEwoLcGFnZV9udW1iZXIYAiABKAUSEAoIcGVyX3BhZ2UYAyABKAUiMQoV",
-            "RHJpbmtDcmVhdGlvblJlc3BvbnNlEhgKEGNyZWF0ZWRfZHJpbmtfaWQYASAB",
-            "KAUiRQoSRHJpbmtVcGRhdGVSZXF1ZXN0EhAKCGRyaW5rX2lkGAEgASgFEh0K",
-            "BWRyaW5rGAIgASgLMg4uY2F0YWxvZy5EcmluayIVChNEcmlua1VwZGF0ZVJl",
-            "c3BvbnNlIigKFERyaW5rRGVsZXRpb25SZXF1ZXN0EhAKCGRyaW5rX2lkGAEg",
-            "ASgFIhcKFURyaW5rRGVsZXRpb25SZXNwb25zZUI9Chdpby5wcm9kcmluay5j",
-            "YXRhbG9nLmR0b0INRHJpbmtEdG9PdXRlclABqgIQcHJvZHJpbmsuY2F0YWxv",
-            "Z2IGcHJvdG8z"));
+            "KAkSEwoLcGFnZV9udW1iZXIYAiABKAUSEAoIcGVyX3BhZ2UYAyABKAUiGwoZ",
+            "VG9wTGV2ZWxDYXRlZ29yaWVzUmVxdWVzdCJBChlEcmlua3NGcm9tQ2F0ZWdv",
+            "cnlSZXF1ZXN0EhMKC2NhdGVnb3J5X2lkGAEgASgFEg8KB3VzZXJfaWQYAiAB",
+            "KAkiMQoVRHJpbmtDcmVhdGlvblJlc3BvbnNlEhgKEGNyZWF0ZWRfZHJpbmtf",
+            "aWQYASABKAUiRQoSRHJpbmtVcGRhdGVSZXF1ZXN0EhAKCGRyaW5rX2lkGAEg",
+            "ASgFEh0KBWRyaW5rGAIgASgLMg4uY2F0YWxvZy5EcmluayIVChNEcmlua1Vw",
+            "ZGF0ZVJlc3BvbnNlIigKFERyaW5rRGVsZXRpb25SZXF1ZXN0EhAKCGRyaW5r",
+            "X2lkGAEgASgFIhcKFURyaW5rRGVsZXRpb25SZXNwb25zZUI9Chdpby5wcm9k",
+            "cmluay5jYXRhbG9nLmR0b0INRHJpbmtEdG9PdXRlclABqgIQcHJvZHJpbmsu",
+            "Y2F0YWxvZ2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::prodrink.catalog.DrinkReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::prodrink.catalog.DrinkRequest), global::prodrink.catalog.DrinkRequest.Parser, new[]{ "DrinkId", "UserId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::prodrink.catalog.DrinkPageRequest), global::prodrink.catalog.DrinkPageRequest.Parser, new[]{ "UserId", "PageNumber", "PerPage" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::prodrink.catalog.TopLevelCategoriesRequest), global::prodrink.catalog.TopLevelCategoriesRequest.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::prodrink.catalog.DrinksFromCategoryRequest), global::prodrink.catalog.DrinksFromCategoryRequest.Parser, new[]{ "CategoryId", "UserId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::prodrink.catalog.DrinkCreationResponse), global::prodrink.catalog.DrinkCreationResponse.Parser, new[]{ "CreatedDrinkId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::prodrink.catalog.DrinkUpdateRequest), global::prodrink.catalog.DrinkUpdateRequest.Parser, new[]{ "DrinkId", "Drink" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::prodrink.catalog.DrinkUpdateResponse), global::prodrink.catalog.DrinkUpdateResponse.Parser, null, null, null, null),
@@ -367,6 +371,240 @@ namespace prodrink.catalog {
 
   }
 
+  public sealed partial class TopLevelCategoriesRequest : pb::IMessage<TopLevelCategoriesRequest> {
+    private static readonly pb::MessageParser<TopLevelCategoriesRequest> _parser = new pb::MessageParser<TopLevelCategoriesRequest>(() => new TopLevelCategoriesRequest());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<TopLevelCategoriesRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::prodrink.catalog.DtoReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public TopLevelCategoriesRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public TopLevelCategoriesRequest(TopLevelCategoriesRequest other) : this() {
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public TopLevelCategoriesRequest Clone() {
+      return new TopLevelCategoriesRequest(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as TopLevelCategoriesRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(TopLevelCategoriesRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(TopLevelCategoriesRequest other) {
+      if (other == null) {
+        return;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class DrinksFromCategoryRequest : pb::IMessage<DrinksFromCategoryRequest> {
+    private static readonly pb::MessageParser<DrinksFromCategoryRequest> _parser = new pb::MessageParser<DrinksFromCategoryRequest>(() => new DrinksFromCategoryRequest());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<DrinksFromCategoryRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::prodrink.catalog.DtoReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DrinksFromCategoryRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DrinksFromCategoryRequest(DrinksFromCategoryRequest other) : this() {
+      categoryId_ = other.categoryId_;
+      userId_ = other.userId_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DrinksFromCategoryRequest Clone() {
+      return new DrinksFromCategoryRequest(this);
+    }
+
+    /// <summary>Field number for the "category_id" field.</summary>
+    public const int CategoryIdFieldNumber = 1;
+    private int categoryId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CategoryId {
+      get { return categoryId_; }
+      set {
+        categoryId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "user_id" field.</summary>
+    public const int UserIdFieldNumber = 2;
+    private string userId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string UserId {
+      get { return userId_; }
+      set {
+        userId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as DrinksFromCategoryRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(DrinksFromCategoryRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (CategoryId != other.CategoryId) return false;
+      if (UserId != other.UserId) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (CategoryId != 0) hash ^= CategoryId.GetHashCode();
+      if (UserId.Length != 0) hash ^= UserId.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (CategoryId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(CategoryId);
+      }
+      if (UserId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(UserId);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (CategoryId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CategoryId);
+      }
+      if (UserId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(UserId);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(DrinksFromCategoryRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.CategoryId != 0) {
+        CategoryId = other.CategoryId;
+      }
+      if (other.UserId.Length != 0) {
+        UserId = other.UserId;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            CategoryId = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            UserId = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class DrinkCreationResponse : pb::IMessage<DrinkCreationResponse> {
     private static readonly pb::MessageParser<DrinkCreationResponse> _parser = new pb::MessageParser<DrinkCreationResponse>(() => new DrinkCreationResponse());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -374,7 +612,7 @@ namespace prodrink.catalog {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::prodrink.catalog.DtoReflection.Descriptor.MessageTypes[2]; }
+      get { return global::prodrink.catalog.DtoReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -491,7 +729,7 @@ namespace prodrink.catalog {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::prodrink.catalog.DtoReflection.Descriptor.MessageTypes[3]; }
+      get { return global::prodrink.catalog.DtoReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -642,7 +880,7 @@ namespace prodrink.catalog {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::prodrink.catalog.DtoReflection.Descriptor.MessageTypes[4]; }
+      get { return global::prodrink.catalog.DtoReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -731,7 +969,7 @@ namespace prodrink.catalog {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::prodrink.catalog.DtoReflection.Descriptor.MessageTypes[5]; }
+      get { return global::prodrink.catalog.DtoReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -848,7 +1086,7 @@ namespace prodrink.catalog {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::prodrink.catalog.DtoReflection.Descriptor.MessageTypes[6]; }
+      get { return global::prodrink.catalog.DtoReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

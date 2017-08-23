@@ -15,11 +15,14 @@ namespace prodrink.catalog {
     static readonly grpc::Marshaller<global::prodrink.catalog.DrinkRequest> __Marshaller_DrinkRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::prodrink.catalog.DrinkRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::prodrink.catalog.Drink> __Marshaller_Drink = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::prodrink.catalog.Drink.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::prodrink.catalog.DrinkPageRequest> __Marshaller_DrinkPageRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::prodrink.catalog.DrinkPageRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::prodrink.catalog.TopLevelCategoriesRequest> __Marshaller_TopLevelCategoriesRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::prodrink.catalog.TopLevelCategoriesRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::prodrink.catalog.Category> __Marshaller_Category = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::prodrink.catalog.Category.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::prodrink.catalog.DrinksFromCategoryRequest> __Marshaller_DrinksFromCategoryRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::prodrink.catalog.DrinksFromCategoryRequest.Parser.ParseFrom);
 
-    static readonly grpc::Method<global::prodrink.catalog.DrinkRequest, global::prodrink.catalog.Drink> __Method_getDrinksById = new grpc::Method<global::prodrink.catalog.DrinkRequest, global::prodrink.catalog.Drink>(
-        grpc::MethodType.DuplexStreaming,
+    static readonly grpc::Method<global::prodrink.catalog.DrinkRequest, global::prodrink.catalog.Drink> __Method_getDrinkById = new grpc::Method<global::prodrink.catalog.DrinkRequest, global::prodrink.catalog.Drink>(
+        grpc::MethodType.Unary,
         __ServiceName,
-        "getDrinksById",
+        "getDrinkById",
         __Marshaller_DrinkRequest,
         __Marshaller_Drink);
 
@@ -28,6 +31,20 @@ namespace prodrink.catalog {
         __ServiceName,
         "getDrinksPage",
         __Marshaller_DrinkPageRequest,
+        __Marshaller_Drink);
+
+    static readonly grpc::Method<global::prodrink.catalog.TopLevelCategoriesRequest, global::prodrink.catalog.Category> __Method_getTopLevelCategories = new grpc::Method<global::prodrink.catalog.TopLevelCategoriesRequest, global::prodrink.catalog.Category>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "getTopLevelCategories",
+        __Marshaller_TopLevelCategoriesRequest,
+        __Marshaller_Category);
+
+    static readonly grpc::Method<global::prodrink.catalog.DrinksFromCategoryRequest, global::prodrink.catalog.Drink> __Method_getDrinksFromCategory = new grpc::Method<global::prodrink.catalog.DrinksFromCategoryRequest, global::prodrink.catalog.Drink>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "getDrinksFromCategory",
+        __Marshaller_DrinksFromCategoryRequest,
         __Marshaller_Drink);
 
     /// <summary>Service descriptor</summary>
@@ -39,12 +56,22 @@ namespace prodrink.catalog {
     /// <summary>Base class for server-side implementations of CatalogService</summary>
     public abstract partial class CatalogServiceBase
     {
-      public virtual global::System.Threading.Tasks.Task getDrinksById(grpc::IAsyncStreamReader<global::prodrink.catalog.DrinkRequest> requestStream, grpc::IServerStreamWriter<global::prodrink.catalog.Drink> responseStream, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::prodrink.catalog.Drink> getDrinkById(global::prodrink.catalog.DrinkRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
       public virtual global::System.Threading.Tasks.Task getDrinksPage(global::prodrink.catalog.DrinkPageRequest request, grpc::IServerStreamWriter<global::prodrink.catalog.Drink> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task getTopLevelCategories(global::prodrink.catalog.TopLevelCategoriesRequest request, grpc::IServerStreamWriter<global::prodrink.catalog.Category> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task getDrinksFromCategory(global::prodrink.catalog.DrinksFromCategoryRequest request, grpc::IServerStreamWriter<global::prodrink.catalog.Drink> responseStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -74,13 +101,21 @@ namespace prodrink.catalog {
       {
       }
 
-      public virtual grpc::AsyncDuplexStreamingCall<global::prodrink.catalog.DrinkRequest, global::prodrink.catalog.Drink> getDrinksById(grpc::Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      public virtual global::prodrink.catalog.Drink getDrinkById(global::prodrink.catalog.DrinkRequest request, grpc::Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
-        return getDrinksById(new grpc::CallOptions(headers, deadline, cancellationToken));
+        return getDrinkById(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual grpc::AsyncDuplexStreamingCall<global::prodrink.catalog.DrinkRequest, global::prodrink.catalog.Drink> getDrinksById(grpc::CallOptions options)
+      public virtual global::prodrink.catalog.Drink getDrinkById(global::prodrink.catalog.DrinkRequest request, grpc::CallOptions options)
       {
-        return CallInvoker.AsyncDuplexStreamingCall(__Method_getDrinksById, null, options);
+        return CallInvoker.BlockingUnaryCall(__Method_getDrinkById, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::prodrink.catalog.Drink> getDrinkByIdAsync(global::prodrink.catalog.DrinkRequest request, grpc::Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return getDrinkByIdAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::prodrink.catalog.Drink> getDrinkByIdAsync(global::prodrink.catalog.DrinkRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_getDrinkById, null, options, request);
       }
       public virtual grpc::AsyncServerStreamingCall<global::prodrink.catalog.Drink> getDrinksPage(global::prodrink.catalog.DrinkPageRequest request, grpc::Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
@@ -89,6 +124,22 @@ namespace prodrink.catalog {
       public virtual grpc::AsyncServerStreamingCall<global::prodrink.catalog.Drink> getDrinksPage(global::prodrink.catalog.DrinkPageRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncServerStreamingCall(__Method_getDrinksPage, null, options, request);
+      }
+      public virtual grpc::AsyncServerStreamingCall<global::prodrink.catalog.Category> getTopLevelCategories(global::prodrink.catalog.TopLevelCategoriesRequest request, grpc::Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return getTopLevelCategories(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncServerStreamingCall<global::prodrink.catalog.Category> getTopLevelCategories(global::prodrink.catalog.TopLevelCategoriesRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_getTopLevelCategories, null, options, request);
+      }
+      public virtual grpc::AsyncServerStreamingCall<global::prodrink.catalog.Drink> getDrinksFromCategory(global::prodrink.catalog.DrinksFromCategoryRequest request, grpc::Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return getDrinksFromCategory(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncServerStreamingCall<global::prodrink.catalog.Drink> getDrinksFromCategory(global::prodrink.catalog.DrinksFromCategoryRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_getDrinksFromCategory, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override CatalogServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -102,8 +153,10 @@ namespace prodrink.catalog {
     public static grpc::ServerServiceDefinition BindService(CatalogServiceBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_getDrinksById, serviceImpl.getDrinksById)
-          .AddMethod(__Method_getDrinksPage, serviceImpl.getDrinksPage).Build();
+          .AddMethod(__Method_getDrinkById, serviceImpl.getDrinkById)
+          .AddMethod(__Method_getDrinksPage, serviceImpl.getDrinksPage)
+          .AddMethod(__Method_getTopLevelCategories, serviceImpl.getTopLevelCategories)
+          .AddMethod(__Method_getDrinksFromCategory, serviceImpl.getDrinksFromCategory).Build();
     }
 
   }

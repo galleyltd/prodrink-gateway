@@ -23,18 +23,21 @@ namespace prodrink.catalog {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1jYXRhbG9nL2NhdGFsb2ctc2VydmljZS5wcm90bxIHY2F0YWxvZxoTY2F0",
-            "YWxvZy9kcmluay5wcm90bxoRY2F0YWxvZy9kdG8ucHJvdG8yigEKDkNhdGFs",
-            "b2dTZXJ2aWNlEjoKDWdldERyaW5rc0J5SWQSFS5jYXRhbG9nLkRyaW5rUmVx",
-            "dWVzdBoOLmNhdGFsb2cuRHJpbmsoATABEjwKDWdldERyaW5rc1BhZ2USGS5j",
-            "YXRhbG9nLkRyaW5rUGFnZVJlcXVlc3QaDi5jYXRhbG9nLkRyaW5rMAEy8AEK",
-            "E0FkbWluQ2F0YWxvZ1NlcnZpY2USPQoLY3JlYXRlRHJpbmsSDi5jYXRhbG9n",
-            "LkRyaW5rGh4uY2F0YWxvZy5Ecmlua0NyZWF0aW9uUmVzcG9uc2USSAoLdXBk",
-            "YXRlRHJpbmsSGy5jYXRhbG9nLkRyaW5rVXBkYXRlUmVxdWVzdBocLmNhdGFs",
-            "b2cuRHJpbmtVcGRhdGVSZXNwb25zZRJQCgtkZWxldGVEcmluaxIdLmNhdGFs",
-            "b2cuRHJpbmtEZWxldGlvblJlcXVlc3QaHi5jYXRhbG9nLkRyaW5rRGVsZXRp",
-            "b25SZXNwb25zZSgBMAFCRwobaW8ucHJvZHJpbmsuY2F0YWxvZy5zZXJ2aWNl",
-            "QhNDYXRhbG9nU2VydmljZU91dGVyUAGqAhBwcm9kcmluay5jYXRhbG9nYgZw",
-            "cm90bzM="));
+            "YWxvZy9kcmluay5wcm90bxoRY2F0YWxvZy9kdG8ucHJvdG8ypgIKDkNhdGFs",
+            "b2dTZXJ2aWNlEjUKDGdldERyaW5rQnlJZBIVLmNhdGFsb2cuRHJpbmtSZXF1",
+            "ZXN0Gg4uY2F0YWxvZy5EcmluaxI8Cg1nZXREcmlua3NQYWdlEhkuY2F0YWxv",
+            "Zy5Ecmlua1BhZ2VSZXF1ZXN0Gg4uY2F0YWxvZy5EcmluazABElAKFWdldFRv",
+            "cExldmVsQ2F0ZWdvcmllcxIiLmNhdGFsb2cuVG9wTGV2ZWxDYXRlZ29yaWVz",
+            "UmVxdWVzdBoRLmNhdGFsb2cuQ2F0ZWdvcnkwARJNChVnZXREcmlua3NGcm9t",
+            "Q2F0ZWdvcnkSIi5jYXRhbG9nLkRyaW5rc0Zyb21DYXRlZ29yeVJlcXVlc3Qa",
+            "Di5jYXRhbG9nLkRyaW5rMAEy8AEKE0FkbWluQ2F0YWxvZ1NlcnZpY2USPQoL",
+            "Y3JlYXRlRHJpbmsSDi5jYXRhbG9nLkRyaW5rGh4uY2F0YWxvZy5Ecmlua0Ny",
+            "ZWF0aW9uUmVzcG9uc2USSAoLdXBkYXRlRHJpbmsSGy5jYXRhbG9nLkRyaW5r",
+            "VXBkYXRlUmVxdWVzdBocLmNhdGFsb2cuRHJpbmtVcGRhdGVSZXNwb25zZRJQ",
+            "CgtkZWxldGVEcmluaxIdLmNhdGFsb2cuRHJpbmtEZWxldGlvblJlcXVlc3Qa",
+            "Hi5jYXRhbG9nLkRyaW5rRGVsZXRpb25SZXNwb25zZSgBMAFCRwobaW8ucHJv",
+            "ZHJpbmsuY2F0YWxvZy5zZXJ2aWNlQhNDYXRhbG9nU2VydmljZU91dGVyUAGq",
+            "AhBwcm9kcmluay5jYXRhbG9nYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::prodrink.catalog.DrinkReflection.Descriptor, global::prodrink.catalog.DtoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null));

@@ -14,17 +14,36 @@ namespace prodrink.gateway.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Drink>> GetDrinks(int pageNumber, int perPage)
+        public async Task<IEnumerable<Category>> GetCategories()
         {
-            var drinkPageRequest = new DrinkPageRequest
+            var requestParams = new TopLevelCategoriesRequest();
+            var call = ServiceProvider.Client.getTopLevelCategories(requestParams);
+            var result = await call.ResponseStream.ToListAsync();
+            return result;
+        }
+        
+        [HttpGet]
+        public async Task<IEnumerable<Drink>> GetDrinks(int categoryId)
+        {
+            var requestParams = new DrinksFromCategoryRequest
             {
                 UserId = "test",
-                PageNumber = pageNumber,
-                PerPage = perPage
+                CategoryId = categoryId
             };
-            
-            var call = ServiceProvider.Client.getDrinksPage(drinkPageRequest);
+            var call = ServiceProvider.Client.getDrinksFromCategory(requestParams);
             var result = await call.ResponseStream.ToListAsync();
+            return result;
+        }
+        
+        [HttpGet]
+        public async Task<Drink> GetDrinkById(int drinkId)
+        {
+            var requestParams = new DrinkRequest
+            {
+                UserId = "test",
+                DrinkId = drinkId
+            };
+            var result = await ServiceProvider.Client.getDrinkByIdAsync(requestParams);
             return result;
         }
     }

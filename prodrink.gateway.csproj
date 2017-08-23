@@ -22,9 +22,4 @@
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Npgsql.EntityFrameworkCore.PostgreSQL, Version=1.9.9.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7">
-      <HintPath>Npgsql.EntityFrameworkCore.PostgreSQL.dll</HintPath>
-    </Reference>
-  </ItemGroup>
 </Project>

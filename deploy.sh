@@ -11,10 +11,9 @@ PROJECT_NAME="prodrink/prodrink-gateway"
 dotnet publish -c Release -o out
 
 # Build the Docker images
-docker build -t ${PROJECT_NAME}:${TAG} .
-docker tag ${PROJECT_NAME}:${TAG} ${PROJECT_NAME}:latest
+docker build -t ${PROJECT_NAME} .
+docker tag ${PROJECT_NAME}:latest
 
 # Login to Docker Hub and upload images
 docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-docker push ${PROJECT_NAME}:${TAG}
 docker push ${PROJECT_NAME}:latest

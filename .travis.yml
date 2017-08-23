@@ -15,4 +15,6 @@ script:
 deploy:
   - provider: script
     script: ./deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD
-    skip_cleanup: true
+    skip_cleanup: 
+    on:
+        branch: master

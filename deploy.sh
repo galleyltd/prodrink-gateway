@@ -1,9 +1,8 @@
 #!/bin/bash
 set -ev
 
-TAG=$1
-DOCKER_USERNAME=$2
-DOCKER_PASSWORD=$3
+DOCKER_USERNAME=$1
+DOCKER_PASSWORD=$2
 
 PROJECT_NAME="prodrink/prodrink-gateway"
 

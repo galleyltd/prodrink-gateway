@@ -37,6 +37,12 @@ namespace prodrink.gateway
 
             AddGrpcProviders(services);
 
+            services.AddAuthentication().AddGoogle(googleOptions =>
+            {
+                googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+                googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            });
+            
             // Add framework services.
             services.AddSwaggerGen(options =>
             {
@@ -49,7 +55,7 @@ namespace prodrink.gateway
                     TermsOfService = "Terms Of Service"
                 });
             });
-
+            
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",

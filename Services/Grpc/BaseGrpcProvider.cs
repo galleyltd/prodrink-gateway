@@ -7,7 +7,7 @@ namespace prodrink.gateway.Services.Grpc
     {
         private readonly IConfiguration _configuration;
         protected Channel Channel;
-        
+
         protected BaseGrpcProvider(IConfiguration configuration)
         {
             _configuration = configuration;
@@ -23,7 +23,7 @@ namespace prodrink.gateway.Services.Grpc
 
         private string GetServiceUrl(string key)
         {
-            return _configuration.GetValue<string>(key);
+            return _configuration.GetValue<string>($"Grpc:Services:{key}");
         }
     }
 }

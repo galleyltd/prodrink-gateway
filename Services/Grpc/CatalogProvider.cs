@@ -10,7 +10,7 @@ namespace prodrink.gateway.Services.Grpc
             Client = new CatalogService.CatalogServiceClient(Channel);
         }
 
-        protected override string ServiceUrlKey => "Catalog";
+        protected override string ServiceKey => "Catalog";
 
         public CatalogService.CatalogServiceClient Client { get; }
     }

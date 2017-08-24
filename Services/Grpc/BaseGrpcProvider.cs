@@ -1,4 +1,5 @@
-﻿using Grpc.Core;
+﻿using System;
+using Grpc.Core;
 using Microsoft.Extensions.Configuration;
 
 namespace prodrink.gateway.Services.Grpc
@@ -16,14 +17,20 @@ namespace prodrink.gateway.Services.Grpc
 
         private void Init()
         {
-            Channel = new Channel(GetServiceUrl(ServiceUrlKey), ChannelCredentials.Insecure);
+            Channel = new Channel(ServiceAddress, ChannelCredentials.Insecure);
         }
 
-        protected abstract string ServiceUrlKey { get; }
+        protected abstract string ServiceKey { get; }
 
-        private string GetServiceUrl(string key)
+        private string ServiceAddress =>
+            $"{GetValueFromEnvOrConfig(ServiceKey, "Url")}:{GetValueFromEnvOrConfig(ServiceKey, "Port")}";
+
+        private string GetValueFromEnvOrConfig(string serviceKey, string valueKey)
         {
-            return _configuration.GetValue<string>($"Grpc:Services:{key}");
+            var envVariable = Environment.GetEnvironmentVariable(string.Concat(serviceKey, valueKey));
+            return string.IsNullOrEmpty(envVariable)
+                ? _configuration.GetValue<string>($"Grpc:Services:{serviceKey}:{valueKey}")
+                : envVariable;
         }
     }
 }

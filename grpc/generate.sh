@@ -8,10 +8,10 @@ PROTOC=${PACKAGE_FOLDER}/protoc
 GRPC_CSHARP_PLUGIN=${PACKAGE_FOLDER}/grpc_csharp_plugin
 PROTO_FOLDER=../../prodrink.proto
 
-chmod +x $PROTOC
-chmod +x $GRPC_CSHARP_PLUGIN
-$PROTOC \
+chmod +x ${PROTOC}
+chmod +x ${GRPC_CSHARP_PLUGIN}
+${PROTOC} \
     -I${PROTO_FOLDER} \
     --csharp_out . --grpc_out . ${PROTO_FOLDER}/catalog/$1 \
-    --plugin=protoc-gen-grpc=$GRPC_CSHARP_PLUGIN
+    --plugin=protoc-gen-grpc=${GRPC_CSHARP_PLUGIN}
 

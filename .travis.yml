@@ -1,23 +1,20 @@
 sudo: required
-language: csharp
-mono: none
-dotnet: 2.0.0
-dist: trusty
-before_install:
-- openssl aes-256-cbc -K $encrypted_c390235c8f42_key -iv $encrypted_c390235c8f42_iv
-  -in appsettings.json.enc -out appsettings.json -d
-install:
-- export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 services:
-- docker
-before_script:
-- chmod a+x ./build.sh
-- chmod a+x ./deploy.sh
+  - docker
+
+before_install:
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  - sudo apt-get update
+  - sudo apt-get -y install docker-ce
+
 script:
-- "./build.sh"
+  - docker build -t prodrink/prodrink-gateway .
+
 deploy:
 - provider: script
-  script: "./deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD"
-  skip_cleanup: 
+  script: ./docker-deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD
+  skip_cleanup: true
   on:
     branch: master

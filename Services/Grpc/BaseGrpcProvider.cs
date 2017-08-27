@@ -1,36 +1,25 @@
-﻿using System;
-using Grpc.Core;
-using Microsoft.Extensions.Configuration;
+﻿using Grpc.Core;
 
 namespace prodrink.gateway.Services.Grpc
 {
     public abstract class BaseGrpcProvider
     {
-        private readonly IConfiguration _configuration;
+        private readonly ISecretsStorageService _secretsService;
         protected Channel Channel;
 
-        protected BaseGrpcProvider(IConfiguration configuration)
+        protected BaseGrpcProvider(ISecretsStorageService secretsService)
         {
-            _configuration = configuration;
+            _secretsService = secretsService;
             Init();
         }
+
+        private string ServiceAddress => _secretsService.GetGrpcServiceHost(ServiceKey);
+
+        protected abstract string ServiceKey { get; }
 
         private void Init()
         {
             Channel = new Channel(ServiceAddress, ChannelCredentials.Insecure);
-        }
-
-        protected abstract string ServiceKey { get; }
-
-        private string ServiceAddress =>
-            $"{GetValueFromEnvOrConfig(ServiceKey, "Url")}:{GetValueFromEnvOrConfig(ServiceKey, "Port")}";
-
-        private string GetValueFromEnvOrConfig(string serviceKey, string valueKey)
-        {
-            var envVariable = Environment.GetEnvironmentVariable(string.Concat(serviceKey, valueKey));
-            return string.IsNullOrEmpty(envVariable)
-                ? _configuration.GetValue<string>($"Grpc:Services:{serviceKey}:{valueKey}")
-                : envVariable;
         }
     }
 }

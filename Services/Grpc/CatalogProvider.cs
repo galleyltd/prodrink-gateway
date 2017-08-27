@@ -1,16 +1,15 @@
-﻿using Microsoft.Extensions.Configuration;
-using prodrink.catalog;
+﻿using prodrink.catalog;
 
 namespace prodrink.gateway.Services.Grpc
 {
     public class CatalogProvider : BaseGrpcProvider
     {
-        public CatalogProvider(IConfiguration configuration) : base(configuration)
+        public CatalogProvider(ISecretsStorageService secretsService) : base(secretsService)
         {
             Client = new CatalogService.CatalogServiceClient(Channel);
         }
 
-        protected override string ServiceKey => "Catalog";
+        protected override string ServiceKey => "CATALOG_SERVICE_HOST";
 
         public CatalogService.CatalogServiceClient Client { get; }
     }

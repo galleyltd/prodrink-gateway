@@ -8,4 +8,4 @@ until dotnet ef database update; do
 done
 
 >&2 echo "Database is up - executing command"
-exec "dotnet run --server.urls http://*:80"
+dotnet run --server.urls http://*:80

@@ -23,26 +23,31 @@ namespace prodrink.gateway
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddLogging();
+
+            // Add application services.
+            services.AddTransient<IEmailSender, EmailSender>();
+
+            var secretsStorageService = new SecretsStorageService();
+            services.AddTransient<ISecretsStorageService>(provider => secretsStorageService);
+            AddGrpcProviders(services);
+
+            var postgresHost = secretsStorageService.GetPostgresHost();
+            var connectionString = $"host={postgresHost};database=postgres;user id=postgres; Password=postgres";
+            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            // Add application services.
-            services.AddTransient<IEmailSender, EmailSender>();
-
             services.AddMvc();
-
-            AddGrpcProviders(services);
 
             services.AddAuthentication().AddGoogle(googleOptions =>
             {
-                googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
-                googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                googleOptions.ClientId = secretsStorageService.GetGoogleAuthClientId();
+                googleOptions.ClientSecret = secretsStorageService.GetGoogleAuthClientSecret();
             });
-            
+
             // Add framework services.
             services.AddSwaggerGen(options =>
             {
@@ -55,7 +60,7 @@ namespace prodrink.gateway
                     TermsOfService = "Terms Of Service"
                 });
             });
-            
+
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
